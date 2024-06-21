@@ -334,7 +334,7 @@ Featured Hotels START -->
                         <!-- Card body -->
                         <div class="card-body px-2">
                             <!-- Title -->
-                            <h5 class="card-title"><a href="hotel-detail.html"
+                            <h5 class="card-title"><a href="{{route('hotel-room',$item->id)}}"
                                     class="stretched-link">{{$item->name}}</a>
                             </h5>
                             <!-- Price and rating -->

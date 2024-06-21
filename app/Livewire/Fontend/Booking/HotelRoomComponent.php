@@ -22,7 +22,10 @@ class HotelRoomComponent extends Component
     public function mount($id){
         $this->hotel_id = $id;
         $data = Hotel::find($this->hotel_id);
-        $this->approve_id = $data->user_id;
+        if($data){
+            $this->approve_id = $data->user_id;
+        }
+        
     }
 
     public function render()

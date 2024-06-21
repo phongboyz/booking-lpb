@@ -5,7 +5,7 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="index.html">
+			<a class="navbar-brand" href="{{route('home')}}">
 				<img class="light-mode-item navbar-brand-item" src="{{asset('fontend/assets/images/logo.svg')}}" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="{{asset('fontend/assets/images/logo-light.svg')}}" alt="logo">
 			</a>
@@ -49,7 +49,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{route('home')}}"><i class="fa-solid fa-hotel me-2"></i>ໜ້າຫຼັກ</a>	</li>
 
 					<!-- Nav item Flight -->
-					<li class="nav-item"> <a class="nav-link" href="index-flight.html"><i class="fa-solid fa-shopping-cart me-2"></i>ລາຍການຈອງ</a>	</li>
+					<li class="nav-item"> <a class="nav-link" href="#"><i class="fa-solid fa-shopping-cart me-2"></i>ລາຍການຈອງ</a>	</li>
 
 					<!-- Nav item Tour -->
 					<li class="nav-item"> <a class="nav-link" href="{{route('contact')}}"><i class="fa-solid fa-phone me-2"></i>ຕິດຕໍ່ພົວພັນ</a> </li>
