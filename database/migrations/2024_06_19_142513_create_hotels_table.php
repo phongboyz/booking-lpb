@@ -28,8 +28,12 @@ return new class extends Migration
             $table->string('img3')->nullable();
             $table->string('img4')->nullable();
             $table->string('img5')->nullable();
+            $table->string('img6')->nullable();
+            $table->string('img7')->nullable();
+            $table->string('img8')->nullable();
             $table->integer('rate')->default('0');
             $table->integer('status')->default('1');
+            $table->text('location')->nullable();
             $table->integer('active')->default('1');
             $table->integer('user_id');
             $table->timestamps();

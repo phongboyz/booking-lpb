@@ -25,8 +25,12 @@ class Hotel extends Model
         'img3',
         'img4',
         'img5',
+        'img6',
+        'img7',
+        'img8',
         'rate',
         'status',
+        'location',
         'active',
         'user_id',
     ];

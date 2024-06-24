@@ -133,6 +133,40 @@
                                         <input type="file" class="filestyle" wire:model="img4" wire:click="uploads">
                                     </div>
                                 </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group" wire:ignore>
+                                        <p>ອັບໂຫຼດຮູບພາບ 5</p>
+                                        <input type="file" class="filestyle" wire:model="img5" wire:click="uploads">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group" wire:ignore>
+                                        <p>ອັບໂຫຼດຮູບພາບ 6</p>
+                                        <input type="file" class="filestyle" wire:model="img6" wire:click="uploads">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group" wire:ignore>
+                                        <p>ອັບໂຫຼດຮູບພາບ 7</p>
+                                        <input type="file" class="filestyle" wire:model="img7" wire:click="uploads">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group" wire:ignore>
+                                        <p>ອັບໂຫຼດຮູບພາບ 8</p>
+                                        <input type="file" class="filestyle" wire:model="img8" wire:click="uploads">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <p>ລິ້ງທີ່ຢູ່</p>
+                                        <input type="text"
+                                            class="form-control @error('location') is-invalid @enderror"
+                                            wire:model="location" placeholder="ລິ້ງທີ່ຢູ່" require>
+                                        @error('location') <span style="color: red"
+                                            class="error">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer">

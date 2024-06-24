@@ -11,7 +11,7 @@ class HotelComponent extends Component
 {
     use WithFileUploads;
     public $data, $count, $provinces, $districts;
-    public $dis_id, $name, $phone, $address, $detail, $promotion1, $promotion2, $promotion3, $img1, $img1s, $img2, $img2s, $img3, $img3s, $img4, $img4s, $img5, $img5s;
+    public $dis_id, $name, $phone, $address, $detail, $promotion1, $promotion2, $promotion3, $img1, $img1s, $img2, $img2s, $img3, $img3s, $img4, $img4s, $img5, $img5s, $img6, $img6s, $img7, $img7s, $img8, $img8s, $location;
     public $editId, $delId, $delName;
     public $search, $dataQ = 15, $dateS, $dateE;
     public $form, $ignore_add = 0;
@@ -121,6 +121,50 @@ class HotelComponent extends Component
             $this->img4->storeAs('upload/hotels/', $imgName);
             $this->img4s = 'upload/hotels/'.$imgName;
         }
+        if (!empty($this->img5)) {
+            if ($this->img5s) {
+                unlink($this->img5s);
+            }
+            $this->validate([
+                'img5' => 'required|mimes:jpg,png,jpeg',
+            ]);
+            $imgName = date('ymdhis').'-'.$this->img5->getClientOriginalName().'.'.$this->img5->extension();
+            $this->img5->storeAs('upload/hotels/', $imgName);
+            $this->img5s = 'upload/hotels/'.$imgName;
+        }
+        if (!empty($this->img6)) {
+            if ($this->img6s) {
+                unlink($this->img6s);
+            }
+            $this->validate([
+                'img6' => 'required|mimes:jpg,png,jpeg',
+            ]);
+            $imgName = date('ymdhis').'-'.$this->img6->getClientOriginalName().'.'.$this->img6->extension();
+            $this->img6->storeAs('upload/hotels/', $imgName);
+            $this->img6s = 'upload/hotels/'.$imgName;
+        }
+        if (!empty($this->img7)) {
+            if ($this->img7s) {
+                unlink($this->img7s);
+            }
+            $this->validate([
+                'img7' => 'required|mimes:jpg,png,jpeg',
+            ]);
+            $imgName = date('ymdhis').'-'.$this->img7->getClientOriginalName().'.'.$this->img7->extension();
+            $this->img7->storeAs('upload/hotels/', $imgName);
+            $this->img7s = 'upload/hotels/'.$imgName;
+        }
+        if (!empty($this->img8)) {
+            if ($this->img8s) {
+                unlink($this->img8s);
+            }
+            $this->validate([
+                'img8' => 'required|mimes:jpg,png,jpeg',
+            ]);
+            $imgName = date('ymdhis').'-'.$this->img8->getClientOriginalName().'.'.$this->img8->extension();
+            $this->img8->storeAs('upload/hotels/', $imgName);
+            $this->img8s = 'upload/hotels/'.$imgName;
+        }
 
         if($this->editId){
             Hotel::where('id',$this->editId)->update([
@@ -136,6 +180,11 @@ class HotelComponent extends Component
                 'img2'=>$this->img2s,
                 'img3'=>$this->img3s,
                 'img4'=>$this->img4s,
+                'img5'=>$this->img5s,
+                'img6'=>$this->img6s,
+                'img7'=>$this->img7s,
+                'img8'=>$this->img8s,
+                'location'=>$this->location,
                 'user_id'=>auth()->user()->id
             ]);
             session()->flash('success', 'ອັບເດດຂໍ້ມູນສຳເລັດ');
@@ -153,6 +202,11 @@ class HotelComponent extends Component
                 'img2'=>$this->img2s,
                 'img3'=>$this->img3s,
                 'img4'=>$this->img4s,
+                'img5'=>$this->img5s,
+                'img6'=>$this->img6s,
+                'img7'=>$this->img7s,
+                'img8'=>$this->img8s,
+                'location'=>$this->location,
                 'user_id'=>auth()->user()->id
             ]);
             session()->flash('success', 'ບັນທຶກຂໍ້ມູນສຳເລັດ');
@@ -176,6 +230,11 @@ class HotelComponent extends Component
         $this->img2s = $data->img2;
         $this->img3s = $data->img3;
         $this->img4s = $data->img4;
+        $this->img5s = $data->img5;
+        $this->img6s = $data->img6;
+        $this->img7s = $data->img7;
+        $this->img8s = $data->img8;
+        $this->location = $data->location;
     }
 
     public function delete($ids){
