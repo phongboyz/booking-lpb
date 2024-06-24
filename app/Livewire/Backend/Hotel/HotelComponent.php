@@ -21,8 +21,8 @@ class HotelComponent extends Component
     {
         $this->districts = District::orderBy('id','desc')->get();
         if(auth()->user()->rolename->name == 'admin'){
-            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
-            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
+            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
+            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
         }else{
             $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
             $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
@@ -32,8 +32,8 @@ class HotelComponent extends Component
 
     public function dataQS(){
         if(auth()->user()->rolename->name == 'admin'){
-            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
-            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
+            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
+            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
         }else{
             $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
             $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
@@ -42,8 +42,8 @@ class HotelComponent extends Component
 
     public function searchData(){
         if(auth()->user()->rolename->name == 'admin'){
-            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
-            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
+            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
+            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
         }else{
             $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
             $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();

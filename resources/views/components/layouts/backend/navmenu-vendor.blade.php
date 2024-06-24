@@ -24,6 +24,20 @@
                         <li><a href="{{route('openrooms')}}"><i class="mdi mdi-door-open"></i> ເປີດຫ້ອງພັກ</a></li>
                     </ul>
                 </li>
+                <li class="has-submenu">
+                    <a href="#"> <i class="mdi mdi-file-pdf-outline"></i>ລາຍງານ
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{route('report1')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນໂຮງແຮມ</a></li>
+                        <li><a href="{{route('report2')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນການຈອງ</a></li>
+                        <li><a href="{{route('report3')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນຫ້ອງ</a></li>
+                        <!-- <li><a href="{{route('report4')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນປະເພດຫ້ອງ</a></li> -->
+                        <!-- <li><a href="{{route('report5')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນການຊຳລະເງິນ</a></li> -->
+                        <!-- <li><a href="{{route('report6')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນລູກຄ້າ</a></li> -->
+                        <li><a href="{{route('report7')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນລາຍຮັບ</a></li>
+                        <!-- <li><a href="{{route('report8')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນຂອງຜູ້ໃຊ້</a></li> -->
+                    </ul>
+                </li>
             </ul>
             <!-- End navigation menu -->
 

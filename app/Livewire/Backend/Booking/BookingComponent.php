@@ -116,6 +116,7 @@ class BookingComponent extends Component
             $checkin->phone = $data->phone;
             $checkin->total = $data->total;
             $checkin->status = 0;
+            $checkin->approve_id = $data->approve_id;
             $checkin->save();
 
             $room->status = 0;

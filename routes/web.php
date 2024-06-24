@@ -29,6 +29,16 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/bookings', App\Livewire\Backend\Booking\BookingComponent::class)->name('bookings');
     Route::get('/openrooms', App\Livewire\Backend\Booking\OpenRoomComponent::class)->name('openrooms');
 
+    //Report
+    Route::get('/report1', App\Livewire\Backend\Report\Report1HorelComponent::class)->name('report1');
+    Route::get('/report2', App\Livewire\Backend\Report\Report2BookingComponent::class)->name('report2');
+    Route::get('/report3', App\Livewire\Backend\Report\Report3RoomComponent::class)->name('report3');
+    Route::get('/report4', App\Livewire\Backend\Report\Report4CateRoomComponent::class)->name('report4');
+    Route::get('/report5', App\Livewire\Backend\Report\Report5PayComponent::class)->name('report5');
+    Route::get('/report6', App\Livewire\Backend\Report\Report6CusComponent::class)->name('report6');
+    Route::get('/report7', App\Livewire\Backend\Report\Report7IncomeComponent::class)->name('report7');
+    Route::get('/report8', App\Livewire\Backend\Report\Report8UserComponent::class)->name('report8');
+
     //System
     Route::get('/roles', App\Livewire\Backend\Role\RoleComponent::class)->name('roles');
     Route::get('/users', App\Livewire\Backend\User\UserComponent::class)->name('users');

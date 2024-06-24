@@ -20,6 +20,14 @@
                     <a href="{{route('vendors')}}"> <i class="mdi mdi-account-tie-outline"></i>ຂໍ້ມູນຄູ່ຮ່ວມກິດຈະການ</a>
                 </li>
                 <li class="has-submenu">
+                    <a href="#"> <i class="mdi mdi-file-pdf-outline"></i>ລາຍງານ
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{route('report6')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນລູກຄ້າ</a></li>
+                        <li><a href="{{route('report8')}}"><i class="mdi mdi-file-pdf-outline"></i>ລາຍງານຂໍ້ມູນຂອງຜູ້ໃຊ້</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
                     <a href="#"> <i class="mdi mdi-account-box-multiple-outline"></i>ຂໍ້ມູນໃຊ້ງານລະບົບ
                     </a>
                     <ul class="submenu">
