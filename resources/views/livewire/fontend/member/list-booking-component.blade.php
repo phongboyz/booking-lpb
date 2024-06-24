@@ -50,7 +50,7 @@ Contact form and vector START -->
                                     <td style="border: 1px groove #000">{{$item->name}}</td>
                                     <td style="border: 1px groove #000">{{$item->bookingname->hotelname->name}} - {{$item->roomname->name}}</td>
                                     <td style="border: 1px groove #000">{{number_format($item->price)}}</td>
-                                    <td style="border: 1px groove #000">@if($item->status == 1) ລໍຖ້າອະນຸມັດ @elseif($item->status == 2) <div class="badge bg-success bg-opacity-10 text-success">ຈອງສຳເລັດ</div> @else <div class="badge bg-orange bg-opacity-10 text-orange">ການຈອງຖືກຍົກເລີກ</div> @endif</td>
+                                    <td style="border: 1px groove #000">@if($item->status == 1) ລໍຖ້າອະນຸມັດ @elseif($item->status == 2 || $item->status == 3) <div class="badge bg-success bg-opacity-10 text-success">ຈອງສຳເລັດ</div> @else <div class="badge bg-orange bg-opacity-10 text-orange">ການຈອງຖືກຍົກເລີກ</div> @endif</td>
                                 </tr>
                             @empty
                             <tr class="text-center p-2" >

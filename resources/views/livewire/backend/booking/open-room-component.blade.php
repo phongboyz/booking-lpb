@@ -50,7 +50,7 @@
                                 Check in
                             </button>
                             @else
-                            <button class="btn btn-sm btn-danger">
+                            <button class="btn btn-sm btn-danger" wire:click="close({{$item->id}})">
                                 Check out
                             </button>
                             @endif

@@ -65,6 +65,7 @@
                                         <tr class="text-center">
                                             <th style="font-size: 12px">ລຳດັບ</th>
                                             <th style="font-size: 12px">ລະຫັດ</th>
+                                            <th style="font-size: 12px">ໂຮງແຮມ</th>
                                             <th style="font-size: 12px">ວັນທີ check in</th>
                                             <th style="font-size: 12px">ວັນທີ check out</th>
                                             <th style="font-size: 12px">ຊື່ຜູ້ຈອງ</th>
@@ -81,6 +82,7 @@
                                         <tr>
                                             <td class="text-center" style="font-size: 12px">{{$no++}}</td>
                                             <td class="text-center" style="font-size: 12px">{{$item->code}}</td>
+                                            <td class="text-center" style="font-size: 12px">{{$item->hotelname->name}}</td>
                                             <td class="text-center" style="font-size: 12px">
                                                 {{date('d/m/Y',strtotime($item->checkin))}}
                                             </td>
@@ -101,6 +103,8 @@
                                                 <span class="text-primary">ລໍຖ້າອະນຸມັດ</span>
                                                 @elseif ($item->status == 2)
                                                 <span class="text-info">ອະນຸມັດສຳເລັດ</span>
+                                                @elseif ($item->status == 3)
+                                                <span class="text-info">ອະນຸມັດສຳເລັດ</span>
                                                 @elseif ($item->status == 0)
                                                 <span class="text-danger">ຍົກເລີກ</span>
                                                 @endif
@@ -112,6 +116,11 @@
                                                 </button>
                                                 <button class="btn btn-danger  phetsarath-font" wire:click="reject({{$item->id}})">
                                                     <i class="mdi mdi-sort-variant-remove"></i> ບໍ່ອະນຸມັດ
+                                                </button>
+                                                @endif
+                                                @if ($item->status == 2)
+                                                <button class="btn btn-info  phetsarath-font" wire:click="open({{$item->id}})">
+                                                    <i class="mdi mdi-arrow-right-bold-box"></i> check-in
                                                 </button>
                                                 @endif
                                             </td>

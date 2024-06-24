@@ -19,12 +19,12 @@ return new class extends Migration
             $table->integer('hotel_id');
             $table->integer('room_id');
             $table->string('from')->default('general');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->string('name');
             $table->string('phone');
-            $table->integer('count');
+            $table->integer('count')->default('0');
             $table->decimal('total',15,2);
-            $table->string('pay_type');
+            $table->string('pay_type')->nullable();
             $table->string('img')->nullable();
             $table->integer('status')->default('1');
             $table->integer('approve_id')->default('0');
