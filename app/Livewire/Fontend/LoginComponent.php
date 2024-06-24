@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Auth;
+namespace App\Livewire\Fontend;
 
 use Livewire\Component;
 use App\Models\Users;
@@ -9,12 +9,11 @@ use Illuminate\Http\RedirectResponse;
 
 class LoginComponent extends Component
 {
-    public $param = [];
     public $username, $password;
-    
+
     public function render()
     {
-        return view('livewire.auth.login-component')->layout('components.layouts.login.app');
+        return view('livewire.fontend.login-component');
     }
 
     public function login(){
@@ -32,9 +31,8 @@ class LoginComponent extends Component
         {
             if(auth()->user()->active == 1){
                 session()->flash('success', 'ເຂົ້າລະບົບສຳເລັດ');
-                return redirect(route('dashboard'));
+                return redirect(route('home'));
             }else{
-                Auth::logout();
                 $this->dispatch('alert',type: 'error', message:'ບັນຊີທ່ານຖືກປິດໃຊ້ງານ ກະລຸນາຕິດຕໍ່ຫາຜູ້ໃຫ້ບໍລິການ!');
             }
         }else{
@@ -46,6 +44,7 @@ class LoginComponent extends Component
     public function logout(): RedirectResponse
     {
         Auth::logout();
+        
         session()->flash('success', 'ອອກລະບົບສຳເລັດ');
         return redirect('/');
     }

@@ -30,14 +30,16 @@
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 
 					<!-- Nav item Listing -->
+					 @if($auth_check == 0)
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="listingMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ສະໝັກສະມາຊິກ</a>
 						<ul class="dropdown-menu" aria-labelledby="listingMenu">
 
-							<li> <a class="dropdown-item" href="booking-confirm.html">ເຂົ້າລະບົບ</a></li>
-							<li> <a class="dropdown-item" href="compare-listing.html">ລົງທະບຽນ</a></li>
+							<li> <a class="dropdown-item" href="{{route('login-cus')}}">ເຂົ້າລະບົບ</a></li>
+							<li> <a class="dropdown-item" href="{{route('register')}}">ລົງທະບຽນ</a></li>
 						</ul>
 					</li>
+					@endif
 
 				</ul>
 			</div>
@@ -49,7 +51,9 @@
                     <li class="nav-item"> <a class="nav-link" href="{{route('home')}}"><i class="fa-solid fa-hotel me-2"></i>ໜ້າຫຼັກ</a>	</li>
 
 					<!-- Nav item Flight -->
-					<li class="nav-item"> <a class="nav-link" href="#"><i class="fa-solid fa-shopping-cart me-2"></i>ລາຍການຈອງ</a>	</li>
+					@if($auth_check == 1)
+					<li class="nav-item"> <a class="nav-link" href="{{route('list-bookings')}}"><i class="fa-solid fa-shopping-cart me-2"></i>ລາຍການຈອງ</a>	</li>
+					@endif
 
 					<!-- Nav item Tour -->
 					<li class="nav-item"> <a class="nav-link" href="{{route('contact')}}"><i class="fa-solid fa-phone me-2"></i>ຕິດຕໍ່ພົວພັນ</a> </li>
@@ -60,7 +64,7 @@
 			</div>
 			<!-- Main navbar END -->
 
-
+			@if($auth_check == 1)
 			<!-- Profile and Notification START -->
 			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
 
@@ -71,42 +75,47 @@
 						<i class="bi bi-bell fa-fw"></i>
 					</a>
 					<!-- Notification dote -->
-					<span class="notif-badge animation-blink"></span>
+					@if($log_booking_f)<span class="notif-badge animation-blink"></span>@endif
 
 					<!-- Notification dropdown menu START -->
 					<div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md shadow-lg p-0">
 						<div class="card bg-transparent">
 							<!-- Card header -->
 							<div class="card-header bg-transparent d-flex justify-content-between align-items-center border-bottom">
-								<h6 class="m-0">Notifications <span class="badge bg-danger bg-opacity-10 text-danger ms-2">4 new</span></h6>
-								<a class="small" href="#">Clear all</a>
+								<h6 class="m-0" style="font-family: 'Phetsarath OT';">ແຈ້ງເຕືອນ <span class="badge bg-danger bg-opacity-10 text-danger ms-2">{{$log_booking_f}} ລາຍການໃໝ່</span></h6>
+								<!-- <a class="small" href="#">Clear all</a> -->
 							</div>
 
 							<!-- Card body START -->
 							<div class="card-body p-0">
 								<ul class="list-group list-group-flush list-unstyled p-2">
 									<!-- Notification item -->
-									<li>
+									 @forelse ($log_booking as $item)
+									 <li>
 										<a href="#" class="list-group-item list-group-item-action rounded notif-unread border-0 mb-1 p-3">
-											<h6 class="mb-2">New! Booking flights from New York ✈️</h6>
-											<p class="mb-0 small">Find the flexible ticket on flights around the world. Start searching today</p>
-											<span>Wednesday</span>
+											<h6 class="mb-2" style="font-family: 'Phetsarath OT';">ລະຫັດ : {{$item->booking_code}}</h6>
+											<p class="mb-0 small">ທີ່ພັກ: {{$item->bookingname->hotelname->name}} (@if($item->status == 2) ຈອງສຳເລັດ @else ການຈອງຖືກຍົກເລີກ @endif)</p>
+											<span>{{date('d/m/Y', strtotime($item->created_at))}}</span>
 										</a>
 									</li>
-									<!-- Notification item -->
-									<li>
-										<a href="#" class="list-group-item list-group-item-action rounded border-0 mb-1 p-3">
-											<h6 class="mb-2">Sunshine saving are here 🌞 save 30% or more on a stay</h6>
-											<span>15 Nov 2022</span>
+									 @empty
+									 <li>
+										<a href="#" class="list-group-item list-group-item-action rounded notif-unread border-0 mb-1 p-3">
+											
+											<p class="mb-0 small">ບໍ່ມີລາຍການແຈ້ງເຕືອນ</p>
+											
 										</a>
 									</li>
+									 @endforelse
+									
+									
 								</ul>
 							</div>
 							<!-- Card body END -->
 
 							<!-- Card footer -->
 							<div class="card-footer bg-transparent text-center border-top">
-								<a href="#" class="btn btn-sm btn-link mb-0 p-0">See all incoming activity</a>
+								<a href="{{route('list-bookings')}}" class="btn btn-sm btn-link mb-0 p-0">ເບິ່ງລາຍລະອຽດທັງໝົດ</a>
 							</div>
 						</div>
 					</div>
@@ -130,19 +139,15 @@
 									<img class="avatar-img rounded-circle shadow" src="{{asset('fontend/assets/images/avatar/01.jpg')}}" alt="avatar">
 								</div>
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="#">Lori Ferguson</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6 mt-2 mt-sm-0" href="#">{{auth()->user()->username}}</a>
+									<p class="small m-0">{{auth()->user()->fname}} {{auth()->user()->lname}}</p>
 								</div>
 							</div>
 						</li>
 
 						<!-- Links -->
 						<li> <hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-bookmark-check fa-fw me-2"></i>My Bookings</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-heart fa-fw me-2"></i>My Wishlist</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Settings</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help Center</a></li>
-						<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+						<li><a class="dropdown-item bg-danger-soft-hover" href="{{route('logout')}}"><i class="bi bi-power fa-fw me-2"></i>ອອກລະບົບ</a></li>
 						<li> <hr class="dropdown-divider"></li>
 
 						<!-- Dark mode options START -->
@@ -176,7 +181,7 @@
 				<!-- Profile dropdown END -->
 			</ul>
 			<!-- Profile and Notification START -->
-
+			@endif
 		</div>
 	</nav>
 	<!-- Logo Nav END -->

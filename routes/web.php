@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogoutController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -8,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Livewire\Fontend\HomeComponent::class)->name('home');
 Route::get('/contact', App\Livewire\Fontend\ContactComponent::class)->name('contact');
+
+Route::get('/register', App\Livewire\Fontend\RegisterComponent::class)->name('register');
+Route::get('/login-cus', App\Livewire\Fontend\LoginComponent::class)->name('login-cus');
 
 Route::get('/hotel-detail', App\Livewire\Fontend\Booking\HotelDetailComponent::class)->name('hotel-detail');
 Route::get('/hotel-room/{id}', App\Livewire\Fontend\Booking\HotelRoomComponent::class)->name('hotel-room');
@@ -32,5 +36,8 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/members', App\Livewire\Backend\User\MemberComponent::class)->name('members');
 
     Route::get('/profiles', App\Livewire\Auth\ProfileComponent::class)->name('profiles');
-    Route::get('/logout', App\Livewire\Auth\LoginComponent::class,'logout')->name('logout');
+    Route::get('/logout', [LogoutController::class,'logout'])->name('logout');
+
+    //Member
+    Route::get('/list-bookings', App\Livewire\Fontend\Member\ListBookingComponent::class)->name('list-bookings');
 });

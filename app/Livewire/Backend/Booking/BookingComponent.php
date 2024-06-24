@@ -8,6 +8,7 @@ use App\Models\Hotel;
 use App\Models\Room;
 use App\Models\Booking;
 use App\Models\BookingDetail;
+use App\Models\LogBooking;
 
 class BookingComponent extends Component
 {
@@ -47,10 +48,17 @@ class BookingComponent extends Component
         $data = Booking::find($ids);
         $de = BookingDetail::where('booking_code',$data->code)->get();
 
-        foreach($de as $item){
-            $room = Room::find($item->room_id);
-            $room->status = 0;
-            $room->save();
+        // foreach($de as $item){
+        //     $room = Room::find($item->room_id);
+        //     $room->status = 0;
+        //     $room->save();
+        // }
+        if($data->form == 'member'){
+            $log = new LogBooking();
+            $log->booking_code = $data->code;
+            $log->user_id = $data->user_id;
+            $log->status = 2;
+            $log->save();
         }
 
         $data->status = 2;
@@ -62,6 +70,15 @@ class BookingComponent extends Component
 
     public function reject($ids){
         $data = Booking::find($ids);
+
+        if($data->form == 'member'){
+            $log = new LogBooking();
+            $log->booking_code = $data->code;
+            $log->user_id = $data->user_id;
+            $log->status = 0;
+            $log->save();
+        }
+
         $data->status = 0;
         $data->save();
 

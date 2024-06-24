@@ -25,6 +25,10 @@ class HotelRoomComponent extends Component
         if($data){
             $this->approve_id = $data->user_id;
         }
+        if(auth()->check() == true){
+            $this->name = auth()->user()->fname.' '.auth()->user()->lname;
+            $this->phone = auth()->user()->phone;
+        }
         
     }
 
@@ -104,13 +108,22 @@ class HotelRoomComponent extends Component
 
         $data = new Booking();
         $data->code = $this->code;
+        $data->hotel_id = $this->hotel_id;
         $data->checkin = date('Y-m-d');
         $data->checkout = date('Y-m-d');
+        if(auth()->check() == 0){
+            $data->form = 'general';
+        }else{
+            $data->form = 'member'; 
+        }   
         $data->name = $this->name;
         $data->phone = $this->phone;
         $data->pay_type = 'aon';
         $data->total = $this->sum;
         $data->img = $this->imgs;
+        if(auth()->check() == 1){
+            $data->user_id = auth()->user()->id; 
+        }  
         $data->approve_id = $this->approve_id;
         $data->save();
 

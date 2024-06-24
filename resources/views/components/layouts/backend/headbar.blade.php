@@ -64,9 +64,9 @@
                         <!-- item-->
                         <div class="dropdown-item noti-title">
                             <h5 class="font-16 m-0">
-                                <span class="float-right">
+                                <span class="text-center">
                                     <a href="{{route('bookings')}}" class="text-dark">
-                                        <small>ລາຍລະອຽດ</small>
+                                        <span>ລາຍລະອຽດ</span>
                                     </a>
                                 </span>
                             </h5>

@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('check_in_outs', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->integer('hotel_id');
             $table->date('checin');
-            $table->date('checkout');
-            $table->string('form');
+            $table->date('checkout')->nullable();
+            $table->integer('hotel_id');
+            $table->integer('room_id');
+            $table->string('from')->default('general');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('phone');
-            $table->string('pay_type');
+            $table->integer('count');
             $table->decimal('total',15,2);
+            $table->string('pay_type');
             $table->string('img')->nullable();
             $table->integer('status')->default('1');
-            $table->integer('user_id')->nullable();
             $table->integer('approve_id')->default('0');
             $table->timestamps();
         });
@@ -35,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('check_in_outs');
     }
 };

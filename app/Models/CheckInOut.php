@@ -5,24 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class CheckInOut extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
         'code',
-        'hotel_id',
         'checin',
         'checkout',
-        'form',
+        'hotel_id',
+        'room_id',
+        'from',
+        'user_id',
         'name',
         'phone',
-        'pay_type',
+        'count',
         'total',
+        'pay_type',
         'img',
         'status',
-        'user_id',
         'approve_id',
     ];
 
@@ -31,4 +33,13 @@ class Booking extends Model
         return $this->belongsTo('App\Models\Hotel','hotel_id','id');
     }
 
+    public function roomname()
+    {
+        return $this->belongsTo('App\Models\Room','room_id','id');
+    }
+
+    public function username()
+    {
+        return $this->belongsTo('App\Models\User','user_id','id');
+    }
 }

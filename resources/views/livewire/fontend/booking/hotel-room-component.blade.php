@@ -85,6 +85,17 @@ Main Banner START -->
     <!-- =======================
 Main Banner END -->
 
+<section class="pt-0 pt-lg-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+                <h4 style="font-family: 'Phetsarath OT'">ທີ່ຕັ້ງໂຮງແຮມ</h4>
+				<iframe class="w-100 h-300px grayscale rounded" src="{{$hotels->location}}" height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
+			</div>
+		</div>
+	</div>
+</section>
+
     <!-- =======================
 Room detail START -->
     <section class="pt-0">
