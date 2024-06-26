@@ -121,7 +121,7 @@ Main Banner END -->
                                                     <label class="form-label">ວັນທີ ເຂົ້າ</label>
                                                     <input type="date" class="form-control"
                                                         placeholder="ເລືອກວັນທີເຂົ້າພັກ" wire:model="date"
-                                                        style="margin-bottom: 10px;">
+                                                        style="margin-bottom: 10px;" {{$disable_date}}>
                                                     @error('date') <span style="color: red"
                                                         class="error">{{ $message }}</span>@enderror
                                                 </div>
@@ -137,7 +137,7 @@ Main Banner END -->
                                                     <label class="form-label">ຫາວັນທີ</label>
                                                     <input type="date" class="form-control"
                                                         placeholder="ເລືອກວັນທີເຂົ້າພັກ" wire:model="enddate"
-                                                        style="margin-bottom: 10px;">
+                                                        style="margin-bottom: 10px;" {{$disable_date}}>
                                                     @error('enddate') <span style="color: red"
                                                         class="error">{{ $message }}</span>@enderror
                                                 </div>
@@ -147,14 +147,14 @@ Main Banner END -->
                                         <div class="col-lg-4">
                                             <div class="d-flex">
                                                 <!-- Icon -->
-                                                 <button class="btn btn-sm btn-primary me-2" style="margin-top: 30px" wire:click="calDate">=</button>
+                                                 <button class="btn btn-sm btn-primary me-2" style="margin-top: 30px" wire:click="calDate" {{$disable_date}}>=</button>
                                                 <!-- <i class=" fs-3 me-2" style="margin-top: 25px">=</i> -->
                                                 <!-- Date input -->
                                                 <div class="form-control-border form-control-transparent form-fs-md">
                                                     <label class="form-label">ຈຳນວນວັນ</label>
                                                     <input type="text" class="form-control" data-mode="range"
                                                         placeholder="ຈຳນວນວັນ" value="{{$sumdate}}"
-                                                        style="margin-bottom: 10px;">
+                                                        style="margin-bottom: 10px;" {{$disable_date}}>
                                                 </div>
                                             </div>
                                         </div>

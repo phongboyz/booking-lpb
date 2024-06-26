@@ -20,6 +20,7 @@ class HotelRoomComponent extends Component
     public $sum=0, $approve_id;
     public $cus = 1, $room = 1, $resualt = 1 .' ຄົນ '. 1 .' ຫ້ອງ', $dopdown = 'hide';
     public $dis_id, $dis_ids, $date, $enddate, $sumdate = 0, $total = 0;
+    public $disable_date = 'enabled';
 
     public function mount($id){
         $this->hotel_id = $id;
@@ -35,6 +36,21 @@ class HotelRoomComponent extends Component
         $this->enddate = session('checkOutDate');
         $this->cus = session('cusCount');
         $this->room = session('roomCount');
+
+        $this->validate([
+            'date'=>'required',
+            'enddate'=>'required',
+        ],[
+            'date.required'=>'ກະລຸນາເລືອກ ວັນທີເຂົ້າທີ່ພັກ ກ່ອນ!',
+            'enddate.required'=>'ກະລຸນາເລືອກ ວັນທີອອກທີ່ພັກ ກ່ອນ!',
+        ]);
+        if(!empty($this->date) && !empty($this->enddate)){
+            $datetime1 = strtotime(date('Y-m-d',strtotime($this->date)));
+            $datetime2 = strtotime(date('Y-m-d',strtotime($this->enddate)));
+            $secs = $datetime2 - $datetime1;
+            $this->sumdate = $secs / 86400;
+            $this->disable_date = 'disabled';
+        }
     }
 
     public function render()
@@ -59,6 +75,7 @@ class HotelRoomComponent extends Component
             $datetime2 = strtotime(date('Y-m-d',strtotime($this->enddate)));
             $secs = $datetime2 - $datetime1;
             $this->sumdate = $secs / 86400;
+            $this->disable_date = 'disabled';
         }
     }
 
@@ -66,11 +83,23 @@ class HotelRoomComponent extends Component
         $this->validate([
             'name'=>'required',
             'phone'=>'required',
+            'date'=>'required',
+            'enddate'=>'required',
         ],[
             'name.required'=>'ກະລຸນາເພີ່ມ ຊື່ຜູ້ຈອງ ກ່ອນ!',
             'phone.required'=>'ກະລຸນາເພີ່ມ ເບີໂທ ກ່ອນ!',
+            'date.required'=>'ກະລຸນາເລືອກ ວັນທີເຂົ້າທີ່ພັກ ກ່ອນ!',
+            'enddate.required'=>'ກະລຸນາເລືອກ ວັນທີອອກທີ່ພັກ ກ່ອນ!',
         ]);
         
+        if(!empty($this->date) && !empty($this->enddate)){
+            $datetime1 = strtotime(date('Y-m-d',strtotime($this->date)));
+            $datetime2 = strtotime(date('Y-m-d',strtotime($this->enddate)));
+            $secs = $datetime2 - $datetime1;
+            $this->sumdate = $secs / 86400;
+            $this->disable_date = 'disabled';
+        }
+
        $sub = substr($this->phone,-4);
        $this->disname = 'disabled';
        $this->disphone = 'disabled';
