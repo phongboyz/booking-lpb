@@ -9,7 +9,13 @@ use App\Models\Hotel;
 class Homecomponent extends Component
 {
     public $cus = 1, $room = 1, $resualt = 1 .' ຄົນ '. 1 .' ຫ້ອງ', $dopdown = 'hide';
-    public $dis_id, $date;
+    public $dis_id, $date, $enddate;
+
+    public function mount(){
+        $this->date = date('Y-m-d');
+        $this->enddate = date('Y-m-d');
+    }
+
     public function render()
     {
         $districts = District::orderBy('id','asc')->get();
@@ -55,6 +61,7 @@ class Homecomponent extends Component
         // dd($this->date);
         session()->flash('disId', $this->dis_id);
         session()->flash('checkInDate', $this->date);
+        session()->flash('checkOutDate', $this->enddate);
         session()->flash('cusCount', $this->cus);
         session()->flash('roomCount', $this->room);
         

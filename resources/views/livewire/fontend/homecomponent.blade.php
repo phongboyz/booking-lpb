@@ -87,7 +87,7 @@ Main Banner START -->
                     <form class="card shadow rounded-3 position-relative p-4 pe-md-5 pb-5 pb-md-4">
                         <div class="row g-4 align-items-center">
                             <!-- Location -->
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-control-border form-control-transparent form-fs-md d-flex">
                                     <!-- Icon -->
                                     <i class="bi bi-geo-alt fs-3 me-2 mt-2"></i>
@@ -107,15 +107,30 @@ Main Banner START -->
                             </div>
 
                             <!-- Check in -->
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="d-flex">
                                     <!-- Icon -->
-                                    <i class="bi bi-calendar fs-3 me-2 mt-2"></i>
+                                    <i class="bi bi-calendar fs-3 me-2" style="margin-top: 25px"></i>
                                     <!-- Date input -->
                                     <div class="form-control-border form-control-transparent form-fs-md">
-                                        <label class="form-label">ວັນທີ ເຂົ້າ-ອອກ</label>
-                                        <input type="date" class="form-control flatpickr" data-mode="range"
-                                            placeholder="ເລືອກວັນທີເຂົ້າພັກ" wire:model="date">
+                                        <label class="form-label">ວັນທີ ເຂົ້າ</label>
+                                        <input type="date" class="form-control" data-mode="range"
+                                            placeholder="ເລືອກວັນທີເຂົ້າພັກ" wire:model="date" style="margin-bottom: 10px;">
+                                            @error('date') <span style="color: red"
+                                            class="error">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Check out -->
+                            <div class="col-lg-3">
+                                <div class="d-flex">
+                                    <!-- Icon -->
+                                    <i class="bi bi-calendar fs-3 me-2" style="margin-top: 25px"></i>
+                                    <!-- Date input -->
+                                    <div class="form-control-border form-control-transparent form-fs-md">
+                                        <label class="form-label">ຫາວັນທີ</label>
+                                        <input type="date" class="form-control" data-mode="range"
+                                            placeholder="ເລືອກວັນທີເຂົ້າພັກ" wire:model="enddate" style="margin-bottom: 10px;">
                                             @error('date') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
@@ -123,7 +138,7 @@ Main Banner START -->
                             </div>
 
                             <!-- Guest -->
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-control-border form-control-transparent form-fs-md d-flex">
                                     <!-- Icon -->
                                     <i class="bi bi-person fs-3 me-2 mt-2"></i>

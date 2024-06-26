@@ -9,7 +9,7 @@ use App\Models\Hotel;
 class HotelDetailComponent extends Component
 {
     public $cus = 1, $room = 1, $resualt = 1 .' ຄົນ '. 1 .' ຫ້ອງ', $dopdown = 'hide';
-    public $dis_id, $dis_ids, $date;
+    public $dis_id, $dis_ids, $date, $enddate;
 
     public function mount(){
         $dis = session('disId');
@@ -18,6 +18,7 @@ class HotelDetailComponent extends Component
         }
         
         $this->date = session('checkInDate');
+        $this->enddate = session('checkOutDate');
         $this->cus = session('cusCount');
         $this->room = session('roomCount');
 
@@ -75,5 +76,15 @@ class HotelDetailComponent extends Component
         session()->flash('roomCount', $this->room);
         
         return redirect(route('hotel-detail'));
+    }
+
+    public function roomDetail($ids){
+        session()->flash('disId', $this->dis_id);
+        session()->flash('checkInDate', $this->date);
+        session()->flash('checkOutDate', $this->enddate);
+        session()->flash('cusCount', $this->cus);
+        session()->flash('roomCount', $this->room);
+
+        return redirect(route('hotel-room',$ids));
     }
 }

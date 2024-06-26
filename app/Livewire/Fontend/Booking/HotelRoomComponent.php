@@ -18,6 +18,8 @@ class HotelRoomComponent extends Component
     public $code, $name, $phone, $img, $imgs;
     public $disname, $disphone;
     public $sum=0, $approve_id;
+    public $cus = 1, $room = 1, $resualt = 1 .' ຄົນ '. 1 .' ຫ້ອງ', $dopdown = 'hide';
+    public $dis_id, $dis_ids, $date, $enddate, $sumdate = 0, $total = 0;
 
     public function mount($id){
         $this->hotel_id = $id;
@@ -29,15 +31,35 @@ class HotelRoomComponent extends Component
             $this->name = auth()->user()->fname.' '.auth()->user()->lname;
             $this->phone = auth()->user()->phone;
         }
-        
+        $this->date = session('checkInDate');
+        $this->enddate = session('checkOutDate');
+        $this->cus = session('cusCount');
+        $this->room = session('roomCount');
     }
 
     public function render()
     {
+
         $hotels = Hotel::find($this->hotel_id);
         $rooms = Room::where('hotel_id',$this->hotel_id)->where('status',1)->get();
         $details = BookingDetail::where('booking_code',$this->code)->get();
         return view('livewire.fontend.booking.hotel-room-component',compact('hotels','rooms','details'));
+    }
+
+    public function calDate(){
+        $this->validate([
+            'date'=>'required',
+            'enddate'=>'required',
+        ],[
+            'date.required'=>'ກະລຸນາເລືອກ ວັນທີເຂົ້າທີ່ພັກ ກ່ອນ!',
+            'enddate.required'=>'ກະລຸນາເລືອກ ວັນທີອອກທີ່ພັກ ກ່ອນ!',
+        ]);
+        if(!empty($this->date) && !empty($this->enddate)){
+            $datetime1 = strtotime(date('Y-m-d',strtotime($this->date)));
+            $datetime2 = strtotime(date('Y-m-d',strtotime($this->enddate)));
+            $secs = $datetime2 - $datetime1;
+            $this->sumdate = $secs / 86400;
+        }
     }
 
     public function addInfo(){
@@ -85,7 +107,7 @@ class HotelRoomComponent extends Component
             $detail->price = $room->price;
             $detail->save();
      
-            $this->sum += ($room->price * 2);
+            $this->sum += ($room->price * $this->sumdate);
         }
        
     }
@@ -93,8 +115,12 @@ class HotelRoomComponent extends Component
     public function payment(){
         $this->validate([
             'img'=>'required',
+            'date'=>'required',
+            'enddate'=>'required',
         ],[
             'img.required'=>'ກະລຸນາເພີ່ມ ຮູບພາບຊຳລະ ກ່ອນ!',
+            'date.required'=>'ກະລຸນາເລືອກ ວັນທີເຂົ້າທີ່ພັກ ກ່ອນ!',
+            'enddate.required'=>'ກະລຸນາເລືອກ ວັນທີອອກທີ່ພັກ ກ່ອນ!',
         ]);
 
         if (!empty($this->img)) {
@@ -109,8 +135,8 @@ class HotelRoomComponent extends Component
         $data = new Booking();
         $data->code = $this->code;
         $data->hotel_id = $this->hotel_id;
-        $data->checkin = date('Y-m-d');
-        $data->checkout = date('Y-m-d');
+        $data->checkin = $this->date;
+        $data->checkout = $this->enddate;
         if(auth()->check() == 0){
             $data->form = 'general';
         }else{
