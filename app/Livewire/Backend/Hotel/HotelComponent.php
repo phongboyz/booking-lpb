@@ -11,7 +11,7 @@ class HotelComponent extends Component
 {
     use WithFileUploads;
     public $data, $count, $provinces, $districts;
-    public $dis_id, $name, $phone, $address, $detail, $promotion1, $promotion2, $promotion3, $img1, $img1s, $img2, $img2s, $img3, $img3s, $img4, $img4s, $img5, $img5s, $img6, $img6s, $img7, $img7s, $img8, $img8s, $location;
+    public $dis_id, $name, $phone, $address, $detail, $price, $promotion1, $promotion2, $promotion3, $img1, $img1s, $img2, $img2s, $img3, $img3s, $img4, $img4s, $img5, $img5s, $img6, $img6s, $img7, $img7s, $img8, $img8s, $location;
     public $editId, $delId, $delName;
     public $search, $dataQ = 15, $dateS, $dateE;
     public $form, $ignore_add = 0;
@@ -21,8 +21,8 @@ class HotelComponent extends Component
     {
         $this->districts = District::orderBy('id','desc')->get();
         if(auth()->user()->rolename->name == 'admin'){
-            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
-            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
+            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
+            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
         }else{
             $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
             $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
@@ -32,8 +32,8 @@ class HotelComponent extends Component
 
     public function dataQS(){
         if(auth()->user()->rolename->name == 'admin'){
-            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
-            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
+            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
+            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
         }else{
             $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
             $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
@@ -42,8 +42,8 @@ class HotelComponent extends Component
 
     public function searchData(){
         if(auth()->user()->rolename->name == 'admin'){
-            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
-            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
+            $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->get();
+            $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->limit($this->dataQ)->count();
         }else{
             $this->data = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->get();
             $this->count = Hotel::whereAny(['name'],'LIKE','%'.$this->search.'%')->where('user_id',auth()->user()->id)->limit($this->dataQ)->count();
@@ -72,9 +72,11 @@ class HotelComponent extends Component
         $this->validate([
             'dis_id'=>'required',
             'name'=>'required',
+            'price'=>'required',
         ],[
             'dis_id.required'=>'ກະລຸນາເລືອກ ເມືອງ ກ່ອນ!',
             'name.required'=>'ກະລຸນາປ້ອນ ຊື່ໂຮງແຮມ ກ່ອນ!',
+            'price.required'=>'ກະລຸນາປ້ອນ ລາຄາເລີ່ມຕົ້ນ ກ່ອນ!',
         ]);
 
         if (!empty($this->img1)) {
@@ -173,6 +175,7 @@ class HotelComponent extends Component
                 'phone'=>$this->phone,
                 'address'=>$this->address,
                 'detail'=>$this->detail,
+                'price'=>$this->price,
                 'promotion1'=>$this->promotion1,
                 'promotion2'=>$this->promotion2,
                 'promotion3'=>$this->promotion3,
@@ -195,6 +198,7 @@ class HotelComponent extends Component
                 'phone'=>$this->phone,
                 'address'=>$this->address,
                 'detail'=>$this->detail,
+                'price'=>$this->price,
                 'promotion1'=>$this->promotion1,
                 'promotion2'=>$this->promotion2,
                 'promotion3'=>$this->promotion3,
@@ -223,6 +227,7 @@ class HotelComponent extends Component
         $this->phone = $data->phone;
         $this->address = $data->address;
         $this->detail = $data->detail;
+        $this->price = $data->price;
         $this->promotion1 = $data->promotion1;
         $this->promotion2 = $data->promotion2;
         $this->promotion3 = $data->promotion3;

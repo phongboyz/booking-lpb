@@ -70,12 +70,13 @@
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-3">
                                     <div class="form-group">
-                                        <p>ລາຍລະອຽດເພີ່ມເຕີມ</p>
-                                        <input type="text" class="form-control @error('detail') is-invalid @enderror"
-                                            wire:model="detail" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ" require>
-                                        @error('detail') <span style="color: red"
+                                        <p>ລາຄາເລີ່ມຕົ້ນ</p>
+                                        <input type="number" class="form-control @error('price') is-invalid @enderror"
+                                            wire:model="price" placeholder="ລາຄາເລີ່ມຕົ້ນ" require>
+                                        @error('price') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
@@ -106,6 +107,15 @@
                                             class="form-control @error('promotion3') is-invalid @enderror"
                                             wire:model="promotion3" placeholder="ໂປຣໂມຊັ່ນ 3" require>
                                         @error('promotion3') <span style="color: red"
+                                            class="error">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <p>ລາຍລະອຽດເພີ່ມເຕີມ</p>
+                                        <input type="text" class="form-control @error('detail') is-invalid @enderror"
+                                            wire:model="detail" placeholder="ລາຍລະອຽດເພີ່ມເຕີມ" require>
+                                        @error('detail') <span style="color: red"
                                             class="error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
@@ -245,6 +255,7 @@
                                                 <th> ລຳດັບ </th>
                                                 <th> ຊື່ໂຮງແຮມ </th>
                                                 <th> ເບີໂທ </th>
+                                                <th> ລາຄາເລີ່ມຕົ້ນ </th>
                                                 <th> ທີ່ຢູ່ </th>
                                                 <th> ລາຍລະອຽດ </th>
                                                 <th> ສະຖານະ </th>
@@ -258,6 +269,7 @@
                                                 <td>{{$no++}}</td>
                                                 <td>{{$item->name}}</td>
                                                 <td>{{$item->phone}}</td>
+                                                <td>{{number_format($item->price)}}</td>
                                                 <td>{{$item->address}}</td>
                                                 <td>{{$item->detail}}</td>
                                                 <td>

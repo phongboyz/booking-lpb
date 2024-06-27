@@ -23,10 +23,10 @@
                         <i class="mdi mdi-file-document-outline display-3 m-0 text-primary"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="text-uppercase font-weight-medium text-truncate mb-2">ຫ້ອງພັກຍັງເຫຼືອ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup"></span> <i
+                        <p class="text-uppercase font-weight-medium text-truncate mb-2">ຈຳນວນໂຮງແຮມ</p>
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$hotel}}</span> <i
                                 class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ຫ້ອງ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span>{{$hotel}} ໂຮງແຮມ</p>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຫ້ອງພັກສັງຈອງໃໝ່</p>
-                        <h2 class="mb-0"><span data-plugin="counterup"></span> <i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$pending}}</span> <i
                                 class="mdi mdi-arrow-down text-danger font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ຫ້ອງ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span>{{$pending}} ຫ້ອງ</p>
                     </div>
 
                 </div>
@@ -59,9 +59,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຫ້ອງພັກສັງຈອງອານຸມັດ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup"></span><i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$new}}</span><i
                                 class="mdi mdi-arrow-down text-danger font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ຫ້ອງ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span>{{$new}} ຫ້ອງ</p>
                     </div>
                 </div>
             </div>
@@ -76,9 +76,9 @@
                     </div>
                     <div class="overflow-hidden">
                         <p class="text-uppercase font-weight-medium text-truncate mb-2">ຫ້ອງພັກສັງຈອງຍົກເລີກ</p>
-                        <h2 class="mb-0"><span data-plugin="counterup"></span> <i
+                        <h2 class="mb-0"><span data-plugin="counterup">{{$cancel}}</span> <i
                                 class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span> ຫ້ອງ</p>
+                        <p class="text-muted mt-2 m-0"><span class="font-weight-medium">ລວມ:</span>{{$cancel}} ຫ້ອງ</p>
                     </div>
 
                 </div>
