@@ -26,7 +26,7 @@ Footer START -->
 						<h5 class="text-white mb-2 mb-md-4">Page</h5>
 						<ul class="nav flex-column text-primary-hover">
 							<li class="nav-item"><a class="nav-link text-body-secondary" href="#">ໜ້າຫຼັກ</a></li>
-							<li class="nav-item"><a class="nav-link text-body-secondary" href="#">ຕິດຕໍ່ພົວພັນ</a></li>
+							<li class="nav-item"><a class="nav-link text-body-secondary" href="{{route('contact')}}">ຕິດຕໍ່ພົວພັນ</a></li>
 							<li class="nav-item"><a class="nav-link text-body-secondary" href="#">ຂໍ້ມູນໂຮງແຮມ</a></li>
 						</ul>
 					</div>

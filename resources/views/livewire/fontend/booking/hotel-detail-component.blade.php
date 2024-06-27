@@ -283,7 +283,7 @@ Hotel list START -->
                                             class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
                                             <!-- Button -->
                                             <div class="d-flex align-items-center">
-                                                <h5 class="fw-bold mb-0 me-1" style="font-family: 'Phetsarath OT'">250,000 ກີບ</h5>
+                                                <h5 class="fw-bold mb-0 me-1" style="font-family: 'Phetsarath OT'">{{number_format($item->price)}} ກີບ</h5>
                                                 <span class="mb-0 me-2">/ ລາຄາເລີ່ມຕົ້ນ</span>
                                             </div>
                                             <!-- Price -->

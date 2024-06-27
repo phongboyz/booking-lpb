@@ -50,6 +50,7 @@ class Homecomponent extends Component
     }
 
     public function search(){
+        
         $this->validate([
             'dis_id'=>'required',
             'date'=>'required',

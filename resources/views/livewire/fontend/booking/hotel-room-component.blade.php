@@ -347,7 +347,7 @@ Room detail START -->
                                                 <div class="bg-light py-3 px-4 rounded-3">
                                                     <h6 class="fw-light small mb-1"
                                                         style="font-family: 'Phetsarath OT'">ເຂົ້າທີ່ພັກ</h6>
-                                                    <h6 class="mb-0">4 March 2022</h6>
+                                                    <h6 class="mb-0">{{date('d/m/Y', strtotime($date))}}</h6>
                                                 </div>
                                             </div>
 
@@ -356,7 +356,7 @@ Room detail START -->
                                                 <div class="bg-light py-3 px-4 rounded-3">
                                                     <h6 class="fw-light small mb-1"
                                                         style="font-family: 'Phetsarath OT'">ອອກທີ່ພັກ</h6>
-                                                    <h6 class="mb-0">8 March 2022</h6>
+                                                    <h6 class="mb-0">{{date('d/m/Y', strtotime($enddate))}}</h6>
                                                 </div>
                                             </div>
                                         </div>

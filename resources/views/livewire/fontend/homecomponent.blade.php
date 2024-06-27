@@ -354,7 +354,7 @@ Featured Hotels START -->
                             </h5>
                             <!-- Price and rating -->
                             <div class="d-flex justify-content-between align-items-center">
-                                <h6 class="text-success mb-0" style="font-family: 'Phetsarath OT'">250,000 ກີບ <small
+                                <h6 class="text-success mb-0" style="font-family: 'Phetsarath OT'">{{number_format($item->price)}} ກີບ <small
                                         class="fw-light" style="font-family: 'Phetsarath OT'">/ ລາຄາເລີ່ມຕົ້ນ</small>
                                 </h6>
                                 <h6 class="mb-0">4.5<i class="fa-solid fa-star text-warning ms-1"></i></h6>
