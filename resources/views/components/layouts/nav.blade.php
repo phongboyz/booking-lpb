@@ -126,9 +126,16 @@
 				<!-- Profile dropdown START -->
 				<li class="nav-item ms-3 dropdown">
 					<!-- Avatar -->
-					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+					 @if (auth()->user()->profile)
+					 <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+						<img class="avatar-img rounded-2" src="{{asset(auth()->user()->profile)}}" alt="avatar">
+					</a>
+					 @else
+					 <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
 						<img class="avatar-img rounded-2" src="{{asset('fontend/assets/images/avatar/01.jpg')}}" alt="avatar">
 					</a>
+					 @endif
+					
 
 					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 						<!-- Profile info -->
@@ -147,6 +154,7 @@
 
 						<!-- Links -->
 						<li> <hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="{{route('profile-cus')}}"><i class="bi bi-bookmark-check fa-fw me-2"></i>ໂປຣຟາຍຂອງຂ້ອຍ</a></li>
 						<li><a class="dropdown-item bg-danger-soft-hover" href="{{route('logout')}}"><i class="bi bi-power fa-fw me-2"></i>ອອກລະບົບ</a></li>
 						<li> <hr class="dropdown-divider"></li>
 
