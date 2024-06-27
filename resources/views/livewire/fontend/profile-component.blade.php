@@ -35,12 +35,12 @@ Content START -->
                                         <!-- Avatar -->
                                         @if (auth()->user()->profile)
                                         <div class="avatar avatar-xl mb-2">
-                                            <img class="avatar-img rounded-circle border border-2 border-white"
+                                            <img class="avatar-img rounded-circle border-white"
                                                 src="{{asset(auth()->user()->profile)}}" alt="">
                                         </div>
                                         @else
                                         <div class="avatar avatar-xl mb-2">
-                                            <img class="avatar-img rounded-circle border border-2 border-white"
+                                            <img class="avatar-img rounded-circle  border-white"
                                                 src="{{asset('fontend/assets/images/avatar/01.jpg')}}" alt="">
                                         </div>
                                         @endif

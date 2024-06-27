@@ -142,9 +142,15 @@
 						<li class="px-3 mb-3">
 							<div class="d-flex align-items-center">
 								<!-- Avatar -->
+								@if (auth()->user()->profile)
+								<div class="avatar me-3">
+									<img class="avatar-img rounded-circle shadow" src="{{asset(auth()->user()->profile)}}" alt="avatar">
+								</div>
+								@else
 								<div class="avatar me-3">
 									<img class="avatar-img rounded-circle shadow" src="{{asset('fontend/assets/images/avatar/01.jpg')}}" alt="avatar">
 								</div>
+								@endif
 								<div>
 									<a class="h6 mt-2 mt-sm-0" href="#">{{auth()->user()->username}}</a>
 									<p class="small m-0">{{auth()->user()->fname}} {{auth()->user()->lname}}</p>
